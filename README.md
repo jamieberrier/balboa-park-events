@@ -1,5 +1,7 @@
 # BalboaParkEvents
 
+A CLI gem to display today's events at San Diego's Balboa Park and ask the user if s/he wants to see more information about the events or view future park events.
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/balboa_park_events`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
