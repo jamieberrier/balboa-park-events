@@ -11,4 +11,5 @@ require "balboa_park_events"
 # Pry.start
 
 require "irb"
-IRB.start(__FILE__)
+IRB.start
+#IRB.start(__FILE__)
