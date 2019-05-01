@@ -1,0 +1,4 @@
+class BalboaParkEvents::Event
+
+
+end
