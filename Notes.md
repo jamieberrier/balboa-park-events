@@ -7,9 +7,8 @@
     2. Event 2
     3. Event 3
     * See more events for today
-    * Search for future events
     * Exit
-3. TYPE THE EVENT NUMBER TO SEE EVENT INFO, TYPE ’more’ TO SEE MORE EVENTS FOR TODAY, TYPE ‘search’ TO SEARCH FOR FUTURE EVENTS, OR TYPE ’exit’:
+3. TYPE THE EVENT NUMBER TO SEE DETAILS ABOUT THE EVENT, TYPE ’more’ TO SEE MORE EVENTS FOR TODAY, OR TYPE ’exit’:
     * Get user input
 4. DISPLAY
     * THE EVENT INFO (balboapark.org/event/84315)
