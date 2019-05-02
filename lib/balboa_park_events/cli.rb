@@ -2,6 +2,13 @@
 class BalboaParkEvents::CLI
 
   def call
+    welcome_message
+    list
+    menu
+    goodbye
+  end
+
+  def welcome_message
     puts ""
     puts "----- Welcome to Balboa Park -----"
     puts ""
@@ -13,10 +20,8 @@ class BalboaParkEvents::CLI
     With a variety of cultural institutions among its 1,200 beautiful and lushly planted acres, there is something for everyone.
     DOC
     puts ""
-    list
-    menu
-    goodbye
   end
+
 
   def list
     puts <<-DOC.gsub /^\s*/, ''
@@ -34,9 +39,7 @@ class BalboaParkEvents::CLI
       puts "------------------------------------------------------------------"
       puts "What would you like to do?"
       puts ""
-      #puts "------------------------------------------------------------------"
       puts "Type the event number you would to know more about (1, 2, or 3) OR"
-      puts "Type 'more' to see more events for today OR"
       puts "Type 'list' to see the list again OR Type 'exit':"
       puts "------------------------------------------------------------------"
 
@@ -50,15 +53,13 @@ class BalboaParkEvents::CLI
         puts "More info on 3rd event..."
       when "list"
         list
-      when "more"
-        puts "Getting more events"
       end
     end
   end
 
   def goodbye
     puts ""
-    puts "Come back tomorrow to see the day's events at Balboa Park!"
+    puts "Come back tomorrow to see the day's featured events at Balboa Park!"
     puts ""
   end
 
