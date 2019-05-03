@@ -3,9 +3,8 @@ class BalboaParkEvents::CLI
 
   def call
     welcome_message
-    list
+    list_events
     menu
-    goodbye
   end
 
   def welcome_message
@@ -22,15 +21,13 @@ class BalboaParkEvents::CLI
     puts ""
   end
 
-
-  def list
-    puts <<-DOC.gsub /^\s*/, ''
-    What's Happening Today:
-      1. Event 1
-      2. Event 2
-      3. Event 3
-    DOC
+  def list_events
+    puts "What's Happening Today:"
     puts ""
+    @events = BalboaParkEvents::Event.today
+    @events.each.with_index(1) do |event, i|
+      puts "#{i}. #{event.title} - #{event.location} - #{event.time} - #{event.type}"
+    end
   end
 
   def menu
@@ -44,15 +41,18 @@ class BalboaParkEvents::CLI
       puts "------------------------------------------------------------------"
 
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "More info on 1st event..."
-      when "2"
-        puts "More info on 2nd event..."
-      when "3"
-        puts "More info on 3rd event..."
-      when "list"
-        list
+
+      if input.to_i > 0
+        the_event = @events[input.to_i - 1]
+        puts "#{the_event.description}"
+        puts "#{the_event.ticket_url}"
+        puts "#{the_event.event_url}"
+      elsif input == "list"
+        list_events
+      elsif input == "exit"
+        goodbye
+      else
+        puts "Didn't understand, please try again."
       end
     end
   end
@@ -62,6 +62,4 @@ class BalboaParkEvents::CLI
     puts "Come back tomorrow to see the day's featured events at Balboa Park!"
     puts ""
   end
-
-
 end
