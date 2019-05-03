@@ -1,15 +1,16 @@
 class BalboaParkEvents::Scraper
-  def get_page
-   @page = Nokogiri::HTML(open("https://www.balboapark.org"))
+
+  def scrape_page
+    Nokogiri::HTML(open("https://www.balboapark.org"))
   end
 
  def get_welcome_header
-   @page.css("div.region.region-highlighted").css("h2").text
+   self.scrape_page.search("div.region.region-highlighted h2").text
    #"Welcome to Balboa Park"
  end
 
  def get_welcome_text
-   @page.css("div.region.region-highlighted").css("p").text
+   self.scrape_page.search("div.region.region-highlighted p").text
    #"Ever changing. Always amazing.  Where culture, science, and nature collide, Balboa Park
    #is home to more than 16 museums, multiple performing arts venues, lovely gardens, trails, and
    #many other creative and recreational attractions, including the San Diego Zoo. With a variety of
@@ -17,8 +18,13 @@ class BalboaParkEvents::Scraper
    #everyone."
  end
 
+ def get_events_header
+   self.scrape_page.search("h1.fancy-header").text
+   #"What's Happening Today"
+ end
+
  def get_events
-   @page.css("div#events-container")
+   self.scrape_page.css("div#events-container")
    #[#<Nokogiri::XML::Element:0x18d59cc name="div" attributes=[#<Nokogiri::XML::Attr:0x18d58f0
    #name="id" value="events-container">, #<Nokogiri::XML::Attr:0x18d58dc name="class"
    #value="container">] children=[#<Nokogiri::XML::Element:0x18d4dc4 name="h1"
@@ -29,10 +35,5 @@ class BalboaParkEvents::Scraper
    #children=[#<Nokogiri::XML::Element:0x18e3cd4 name="a" attributes=[#<Nokogiri::XML::Attr:0x18e3c70 name="class"
    #value="clear-button">, #<Nokogiri::XML::Attr:0x18e3c5c name="href" value="/events">]
    #children=[#<Nokogiri::XML::Text:0x18e3478 "See More Events">]>]>]>]
- end
-
- def get_events_header
-   get_events.css("h1.fancy-header").text
-   #"What's Happening Today"
  end
 end

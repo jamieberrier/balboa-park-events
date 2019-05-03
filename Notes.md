@@ -6,9 +6,7 @@
     1. Event 1
     2. Event 2
     3. Event 3
-    * See more events for today
-    * Exit
-3. TYPE THE EVENT NUMBER TO SEE DETAILS ABOUT THE EVENT, TYPE ’more’ TO SEE MORE EVENTS FOR TODAY, OR TYPE ’exit’:
+3. TYPE THE EVENT NUMBER TO SEE DETAILS ABOUT THE EVENT OR TYPE ’exit’:
     * Get user input
 4. DISPLAY
     * THE EVENT INFO (balboapark.org/event/84315)
@@ -24,6 +22,8 @@
             * https://www.sdnhm.org/visit/
         * Event-event-link
             * https://www.sdnhm.org/exhibitions/hidden-gems/
+
+****FUTURE FUNCTIONALITY*****
     * A LIST OF EVENT TYPES (balboapark.org/events)
         1. Permanent Exhibitions (#results-inner > h2:nth-child(1))
         2. Exhibition (#results-inner > h2:nth-child(3))
@@ -79,6 +79,9 @@ SEE MORE EVENTS
     * AKA balboaparks.org/events
 
 —————————————————————————————————————————
+
+****FUTURE FUNCTIONALITY****
+
 PERMANENT EXHIBITIONS
 1. Field-title (contains link to event page)
     1. #results-inner > div:nth-child(2) > div:nth-child(1) > div > div > div > div.container-top > div.field-title > a

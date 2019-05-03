@@ -2,6 +2,7 @@
 class BalboaParkEvents::CLI
 
   def call
+    @page = BalboaParkEvents::Scraper.new
     welcome_message
     list_events
     menu
@@ -9,25 +10,22 @@ class BalboaParkEvents::CLI
 
   def welcome_message
     puts ""
-    puts "----- Welcome to Balboa Park -----"
+    puts "----- #{@page.get_welcome_header} -----"
     puts ""
-    puts <<-DOC.gsub /^\s*/, ''
-    Ever changing. Always amazing.
-    Where culture, science, and nature collide, Balboa Park is home to
-    more than 16 museums, multiple performing arts venues, lovely gardens, trails, and
-    many other creative and recreational attractions, including the San Diego Zoo.
-    With a variety of cultural institutions among its 1,200 beautiful and lushly planted acres, there is something for everyone.
-    DOC
+    puts "#{@page.get_welcome_text}"
+    puts ""
+    puts "-------------------------------------------------------"
     puts ""
   end
 
   def list_events
-    puts "What's Happening Today:"
+    puts "#{@page.get_events_header}"
     puts ""
     @events = BalboaParkEvents::Event.today
     @events.each.with_index(1) do |event, i|
       puts "#{i}. #{event.title} - #{event.location} - #{event.time} - #{event.type}"
     end
+    puts ""
   end
 
   def menu
